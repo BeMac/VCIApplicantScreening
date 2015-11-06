@@ -10,9 +10,6 @@ namespace ScreeningApp.Controllers
     {
         public ActionResult Index()
         {
-            //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-
             int originalNumber = 1;
 
             object boxedObject = originalNumber;
@@ -27,16 +24,46 @@ namespace ScreeningApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+
+        public ActionResult ShowCSharpPage()
+        {
+            int something = 1;
+            return View("CSharpMain");
+        }
+
+        public ActionResult ShowJavaScriptPage()
+        {
+            int something = 1;
+            return View("JavaScriptMain");
+        }
+
+        public ActionResult ShowRazorPage()
+        {
+            int something = 1;
+            return View("RazorMain");
+        }
+
+        public ActionResult ShowMVCPage()
+        {
+            int something = 1;
+            return View("MVCMain");
+        }
+
+        public ActionResult ShowEasterEggPage()
+        {
+            int something = 1;
+            if (something == 1)
+            {
+                throw new Exception();
+            }
+            return View("EasterEggMain");
         }
     }
 }

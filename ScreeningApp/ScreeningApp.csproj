@@ -303,6 +303,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Areas\MVCMain.cshtml" />
+    <Content Include="Views\Home\MVCMain.cshtml" />
+    <Content Include="Views\Home\CSharpMain.cshtml" />
+    <Content Include="Views\Home\RazorMain.cshtml" />
+    <Content Include="Views\Home\JavaScriptMain.cshtml" />
+    <Content Include="Views\Home\EasterEggMain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

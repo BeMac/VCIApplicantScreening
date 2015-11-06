@@ -8,7 +8,7 @@
             <hgroup class="title">
 
                 <h1>@mainTitle</h1>
-                <br/>
+                <br />
                 <h2>@subTitle.</h2>
                 <h2>@ViewBag.Message</h2>
             </hgroup>
@@ -19,46 +19,37 @@
         </div>
     </section>
 }
-<h2>Please Select From One Of The Following:</h2>
-<br />
-<br />
-<div>
-    <button type="button" class="testSectionbtn">MVC</button> 
+<div id="MainPage">
+    <h2>Please Select From One Of The Following Tests:</h2>
+    <br />
+    <br />
+    <div>
+        <a href="@Url.Action("ShowCSharpPage", "Home")">
+            <button class="testSectionbtn">C#</button>
+        </a>
+    </div>
+    <br />
+    <div>
+        <a href="@Url.Action("ShowJavaScriptPage", "Home")">
+            <button class="testSectionbtn">JavaScript</button>
+        </a>
+    </div>
+    <br />
+    <div>
+        <a href="@Url.Action("ShowMVCPage", "Home")">
+            <button class="testSectionbtn">MVC</button>
+        </a>
+    </div>
+    <br />
+    <div>
+        <a href="@Url.Action("ShowRazorPage", "Home")">
+            <button class="testSectionbtn">ASP.NET/Razor</button>
+        </a>
+    </div>
+    <br />
+    <div>
+        <a href="@Url.Action("ShowEasterEggPage", "Home")">
+            <button class="testSectionbtn">Easter Egg Test</button>
+        </a>
+    </div>
 </div>
-<br/>
-<div>
-    <button type="button" class="testSectionbtn">C#</button> 
-</div>
-<br />
-<div>
-    <button type="button" class="testSectionbtn">JavaScript</button>
-</div>
-<br />
-<div>
-    <button type="button" class="testSectionbtn">ASP.NET / RAZOR</button>
-</div>
-
-<ol class="round">
-    @*<li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>*@
-
-    @*<li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
-
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>*@
-</ol>

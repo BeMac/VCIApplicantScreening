@@ -12,13 +12,9 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    @*<p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>*@
                     <img src="/Images/Verified_Credentials_Logo_green.png" />
                 </div>
                 <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -45,5 +41,46 @@
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+        
+        <script type="text/javascript">
+            $('#MvcButton').click(function() {
+                $.ajax({
+                    url: "/Home/ShowMVCPage",
+                    success: function (result) {
+                        debugger;
+                        $("#MainPage").html(result);
+                    }
+                });
+            });
+            $('#CSharpButton').click(function () {
+                $.ajax({
+                    url: "/Home/ShowCSharpPage",
+                    success: function (result) {
+                    }
+                });
+            });
+            $('#JavaScriptButton').click(function () {
+                $.ajax({
+                    url: "/Home/GetMVC",
+                    success: function (result) {
+                    }
+                });
+            });
+            $('#RazorButton').click(function () {
+                $.ajax({
+                    url: "/Home/GetMVC",
+                    success: function (result) {
+                    }
+                });
+            });
+            $('#BrokenButton').click(function () {
+                $.ajax({
+                    url: "/Home/GetMVC",
+                    success: function (result) {
+                    }
+                });
+            });
+        </script>
+
     </body>
 </html>
