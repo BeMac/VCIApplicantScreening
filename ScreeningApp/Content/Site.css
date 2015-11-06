@@ -213,13 +213,13 @@ ul#menu {
 }
 
     .featured .content-wrapper {
-        background-color: ##60a300;
+        background-color: #60a300;
         background-image: -ms-linear-gradient(left, #60a300 0%, #60a300 100%);
         background-image: -o-linear-gradient(left, #60a300 0%, #60a300 100%);
         background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #60a300), color-stop(1, #60a300));
         background-image: -webkit-linear-gradient(left, #60a300 0%, #60a300 100%);
-        background-image: linear-gradient(left, #60a300 0%, #60a300 100%);
-        color: ##60a300;
+        background-image: -linear-gradient(left, #60a300 0%, #60a300 100%);
+        color: #60a300;
         padding: 20px 40px 30px 40px;
     }
 
@@ -230,6 +230,12 @@ ul#menu {
         .featured p {
             font-size: 1.1em;
         }
+
+
+.testSectionbtn {
+    width: 200px;
+    text-align: center;
+}
 
 /* page titles */
 hgroup.title {
