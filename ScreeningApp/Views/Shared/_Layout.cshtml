@@ -80,6 +80,42 @@
                     }
                 });
             });
+            $('#ConvertCurrencyBtn').click(function () {
+                $('#conversionDisplayArea').css('visibility', 'hidden');
+                $('#errorContainer').css('visibility', 'hidden');
+                var amount = $('#leftBox').val();
+                var convertFrom = $('#convertFrom').val();
+                var convertTo = $('#convertTo').val();
+                $.ajax({
+                    type: "Get",
+                    url: "/Home/ConvertCurrency",
+                    data: { amount: amount, convertFrom: convertFrom, convertTo: convertTo },
+                    success: function (result) {
+                        $('#conversionDisplayArea').css('visibility', 'visible');
+                        $('#convertedValue').html(Number(result).toLocaleString('en'));
+                        
+                        $('#baseCurrency').text($('#convertFrom').find("option:selected").text());
+                        $('#baseValue').text(amount);
+                        $('#newCurrency').text($('#convertTo').find("option:selected").text());
+                        
+                    },
+                    error: function (request, textStatus, errorThrown) {
+                        debugger;
+                        if (request.status === 500) {
+                            $('#errorContainer').text("You didn't enter a number, can you make the code handle this more gracefully?");
+                        }
+                        else if (request.status === 520) {
+                            $('#errorContainer').text("This app can currently only convert from US Dollars. Can you Extend this?");
+                            
+                            
+                        }
+                        $('#errorContainer').css('visibility', 'visible');
+                        
+
+                    }
+                });
+            });
+
         </script>
 
     </body>

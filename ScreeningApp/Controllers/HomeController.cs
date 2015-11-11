@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Web;
+using System.Reflection;
 using System.Web.Mvc;
+using ScreeningApp.Models;
 
 namespace ScreeningApp.Controllers
 {
@@ -14,11 +15,6 @@ namespace ScreeningApp.Controllers
 
             object boxedObject = originalNumber;
             boxedObject = 123;
-            
-            
-            //unbox this variable;
-            //originalNumber = (int) boxedObject;
-            
             return View();
         }
 
@@ -34,7 +30,10 @@ namespace ScreeningApp.Controllers
 
         public ActionResult ShowCSharpPage()
         {
-            int something = 1;
+            var selectList = from CurrencyType t in Enum.GetValues(typeof (CurrencyType)) 
+                             select new {ID = t, Name = GetEnumDescription(t)};
+            
+            ViewData["currencyTypes"] = new SelectList(selectList, "ID", "Name");
             return View("CSharpMain");
         }
 
@@ -64,6 +63,64 @@ namespace ScreeningApp.Controllers
                 throw new Exception();
             }
             return View("EasterEggMain");
+        }
+
+        public ActionResult ConvertCurrency(double amount, CurrencyType convertFrom, CurrencyType convertTo)
+        {
+            double multiplier = GetMultiplier(convertFrom, convertTo);
+            double convertedAmount = amount * multiplier;
+
+            return Json(convertedAmount, JsonRequestBehavior.AllowGet);
+        }
+
+        private double GetMultiplier(CurrencyType fromType, CurrencyType toType)
+        {
+            double multiplier = 0;
+
+            if (fromType == CurrencyType.USD)
+            {
+                multiplier = ConvertFromUS(toType);
+            }
+            else
+            {
+                Response.StatusCode = 520;
+            }
+            
+            return multiplier;
+        }
+
+        public static string GetEnumDescription(Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+            DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            if (attributes != null && attributes.Length > 0)
+            {
+                return attributes[0].Description;
+            }
+            else
+            {
+                return value.ToString();
+            }
+        }
+
+        private double ConvertFromUS(CurrencyType toType)
+        {
+            switch (toType)
+            {
+                case CurrencyType.USD:
+                    return 1;
+                case CurrencyType.BYR:
+                    return 17640;
+                case CurrencyType.KES:
+                    return 102.25;
+                case CurrencyType.BRL:
+                    return 3.77;
+                case CurrencyType.CNY:
+                    return 6.37;
+                default:
+                    return 1;
+            }
         }
     }
 }
