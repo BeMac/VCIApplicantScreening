@@ -100,7 +100,6 @@
                         
                     },
                     error: function (request, textStatus, errorThrown) {
-                        debugger;
                         if (request.status === 500) {
                             $('#errorContainer').text("You didn't enter a number, can you make the code handle this more gracefully?");
                         }
